@@ -1,17 +1,9 @@
 
 # 更新
 
+* 2019-07-24 [v0.1.0](https://github.com/EtherDream/jsproxy/blob/master/changelogs/v0.1.0.md) 发布，主要修复了缓存失效的问题。网络接口和之前版本不兼容，请及时更新服务端和 cfworker。
+
 * 2019-06-22 [cfworker 无服务器版](cf-worker) 发布，长期使用演示服务的请使用该版本。
-
-* 2019-06-11 前端脚本调整，首页可离线访问（如果长时间加载中，尝试多刷新几次或者隐身模式访问）
-
-* 2019-05-30 更新 cfworker，对 ytb 视频进行了优化（推荐选 1080p+，不会增加服务器压力）
-
-* 2019-05-29 nginx 增加静态资源服务，可同时支持代理接口和首页访问
-
-* 2019-05-27 增加 nio.io、sslip.io 后备域名，减少申请失败的几率
-
-* 2019-05-26 安装时自动申请证书（使用 xip.io 域名），安装后即可预览
 
 [查看更多](changelogs)
 
@@ -19,7 +11,7 @@
 # 安装
 
 ```bash
-curl https://raw.githubusercontent.com/EtherDream/jsproxy/master/i.sh | bash
+curl https://raw.githubusercontent.com/EtherDream/jsproxy/0.1.0/i.sh | bash
 ```
 
 * 自动安装目前只支持 Linux x64，并且需要 root 权限
@@ -28,20 +20,45 @@ curl https://raw.githubusercontent.com/EtherDream/jsproxy/master/i.sh | bash
 
 无法满足上述条件，或想了解安装细节，可尝试[手动安装](docs/setup.md)。
 
-测试: `https://服务器IP.xip.io:8443`（具体参考脚本输出），线路选择 `当前站点`。
+测试: `https://服务器IP.xip.io:8443`（具体参考脚本输出）
 
 
-# 部署
+### 自定义域名
 
-Fork 本项目，进入 `gh-pages` 分支，编辑 `conf.js` 文件：
+将域名 `example.com` 解析到服务器 IP，然后执行：
+
+```bash
+curl https://raw.githubusercontent.com/EtherDream/jsproxy/master/i.sh | bash -s example.com
+```
+
+访问: `https://example.com:8443`
+
+
+### 自定义端口
+
+默认端口为 8443 (HTTPS) 和 8080 (HTTP) ，如需改成 443 和 80，推荐使用端口转发：
+
+```bash
+iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-ports 8443
+iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-ports 8080
+```
+
+同时修改 `www.conf` 中的 `:8443` 为 `:443`。
+
+
+### 使用 GitHub Pages 前端
+
+本项目支持前后端分离，前端部分（`www` 目录下的文件）可部署在第三方 Web 服务器上。
+
+例如演示站点的前端部署于 GitHub Pages 服务，从而可使用个性域名（*.github.io），还能减少一定的流量开销。
+
+Fork 本项目，进入 `gh-pages` 分支（该分支内容和 `www` 目录相同），编辑 `conf.js` 文件：
 
 * 节点列表（`node_map` 字段，包括节点 id 和节点主机）
 
 * 默认节点（`node_default` 字段，指定节点 id）
 
 访问 `https://用户名.github.io/jsproxy` 预览。
-
-GitHub 支持[自定义域名](https://help.github.com/en/articles/using-a-custom-domain-with-github-pages)。也可以将文件发布到自己的 Web 服务器上。
 
 
 # 维护
