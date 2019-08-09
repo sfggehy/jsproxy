@@ -291,7 +291,9 @@
     <!-- container-scroller -->
 
     <!-- plugins:js -->
-    <script src="https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/vendors/base/vendor.bundle.base.js"></script>
+    <!-- <script src="https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/vendors/base/vendor.bundle.base.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page-->
     <!-- <script src="vendors/chart.js/Chart.min.js"></script> -->
@@ -334,12 +336,12 @@
       switch (cmd) {
       case SW_CONF_RETURN:
         conf = msg
-        showConf()
+        //showConf()
         break
 
       case SW_CONF_CHANGE:
         conf = msg
-        updateSelected()
+        //updateSelected()
         break
 
       case SW_READY:

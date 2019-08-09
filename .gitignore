@@ -3,3 +3,7 @@ www
 cert
 nginx
 *.sh
+css
+fonts
+js
+vendors
