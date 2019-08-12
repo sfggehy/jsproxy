@@ -2304,7 +2304,10 @@
           .match(/([^;]*)(?:.*?charset=['"]?([^'"]+))?/),
         b = a.destination;
       if ("script" === b || "worker" === b || "sharedworker" === b) {
-          console.log("loaded script : ", o, i);
+          if (o.host == "cdn.bootcss.com"){
+              return l("content-type", "text/javascript"),
+                new Response(r.body, g);
+          }
         const a = (function(a, o) {
           const i = new Uint8Array(a),
             e = T.a(i, o) || i;
