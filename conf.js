@@ -87,10 +87,10 @@ jsproxy_config({
   url_handler: {
     "https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/": {
       replace: "https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/"
+    },
+    "http://static.mxlog.cn/": {
+      replace: "http://static.mxlog.cn/"
     }
-    // 'https://www.pornhub.com/': {
-    //   redir: 'https://php.net/'
-    // },
     // 'http://haha.com/': {
     //   content: 'Hello World'
     // },
