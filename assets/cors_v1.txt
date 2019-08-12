@@ -5,6 +5,8 @@
 ssl.google-analytics.com
 
 # [public]
+static.mxlog.cn
+mxnav-1251074544.cos.ap-shanghai.myqcloud.com
 cdn.jsdelivr.net
 unpkg.com
 cdnjs.cloudflare.com
