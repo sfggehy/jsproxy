@@ -2304,6 +2304,7 @@
           .match(/([^;]*)(?:.*?charset=['"]?([^'"]+))?/),
         b = a.destination;
       if ("script" === b || "worker" === b || "sharedworker" === b) {
+          console.log("loaded script : ", o, i);
         const a = (function(a, o) {
           const i = new Uint8Array(a),
             e = T.a(i, o) || i;
