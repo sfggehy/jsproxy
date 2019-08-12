@@ -85,9 +85,9 @@ jsproxy_config({
    * URL 自定义处理（设计中）
    */
   url_handler: {
-    // 'https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/': {
-    //   replace: 'https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/'
-    // },
+    "https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/": {
+      replace: "https://mxnav-1251074544.cos.ap-shanghai.myqcloud.com/"
+    }
     // 'https://www.pornhub.com/': {
     //   redir: 'https://php.net/'
     // },
